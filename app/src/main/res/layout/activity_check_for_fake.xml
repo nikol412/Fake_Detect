@@ -51,6 +51,12 @@
                 android:layout_marginTop="16dp"
                 android:background="@drawable/rounded_button"/>
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_recycler_view"
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="500dp" />
+
         </LinearLayout>
     </ScrollView>
 
