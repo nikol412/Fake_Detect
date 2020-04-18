@@ -21,7 +21,7 @@ class CheckForFakeVM: ViewModel() {
 
     fun onCheckClick(){
         //check.call()
-        if(!textField.value.equals("")) {
+        if(textField.value != null) {
             sendLink(textField.value!!)
         }
     }
@@ -32,7 +32,7 @@ class CheckForFakeVM: ViewModel() {
                 call: Call<CheckLinkResponse>,
                 t: Throwable
             ) {
-                check.value = textField.value
+                check.value = null
                 Log.d("retrofit", "$t")
             }
 
@@ -41,7 +41,8 @@ class CheckForFakeVM: ViewModel() {
                 response: Response<CheckLinkResponse>
             ) {
                 //check.value = response.body()?.prob.toString()
-                check.value = textField.value
+                val checkResponse = response.body()
+                check.value = checkResponse?.prob.toString()
                 Log.d("retrofit", response.toString())
             }
 

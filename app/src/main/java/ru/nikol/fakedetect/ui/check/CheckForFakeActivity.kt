@@ -5,6 +5,9 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import org.jetbrains.anko.alert
+import org.jetbrains.anko.design.snackbar
+import org.jetbrains.anko.okButton
 import org.jetbrains.anko.toast
 import ru.nikol.fakedetect.R
 import ru.nikol.fakedetect.databinding.ActivityCheckForFakeBinding
@@ -23,8 +26,16 @@ class CheckForFakeActivity : AppCompatActivity() {
         binding.viewModel = model
 
         model.check.observe(this, Observer {
-            toast(it)
-            
+            if(it == null){
+                alert {
+                    title = "Error"
+                    message = "Sorry, something went wrong"
+                    okButton {  }
+                }
+            } else {
+                toast(it)
+                //TODO realize visualization response
+            }
         })
 
     }
