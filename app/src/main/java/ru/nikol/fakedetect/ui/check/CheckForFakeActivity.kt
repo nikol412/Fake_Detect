@@ -1,4 +1,4 @@
-package ru.nikol.fakedetect.check
+package ru.nikol.fakedetect.ui.check
 
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -23,7 +23,8 @@ class CheckForFakeActivity : AppCompatActivity() {
         binding.viewModel = model
 
         model.check.observe(this, Observer {
-            toast("its okey")
+            toast(it)
+            
         })
 
     }

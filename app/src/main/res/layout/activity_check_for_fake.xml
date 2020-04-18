@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="ru.nikol.fakedetect.check.CheckForFakeVM" />
+            type="ru.nikol.fakedetect.ui.check.CheckForFakeVM" />
     </data>
 
     <ScrollView
@@ -15,7 +15,7 @@
         android:layout_height="729dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:context=".check.CheckForFakeActivity"
+        tools:context=".ui.check.CheckForFakeActivity"
         tools:layout_editor_absoluteY="1dp"
         android:background="@android:color/black">
 

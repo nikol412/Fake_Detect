@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="ru.nikol.fakedetect">
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -10,9 +11,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".check.CheckForFakeActivity"></activity>
-        <activity android:name=".MainActivity">
+        android:theme="@style/AppTheme"
+        android:networkSecurityConfig="@xml/network_config">
+        <activity android:name="ru.nikol.fakedetect.ui.check.CheckForFakeActivity"
+            android:usesCleartextTraffic="true"
+            tools:replace="android:usesCleartextTraffic"></activity>
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

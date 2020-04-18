@@ -1,9 +1,10 @@
-package ru.nikol.fakedetect
+package ru.nikol.fakedetect.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import ru.nikol.fakedetect.check.CheckForFakeActivity
+import ru.nikol.fakedetect.R
+import ru.nikol.fakedetect.ui.check.CheckForFakeActivity
 
 class MainActivity : AppCompatActivity() {
 

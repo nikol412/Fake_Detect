@@ -8,7 +8,7 @@ class CheckLinkResponse {
     @Expose
     var prob: Double? = null
 
-    @SerializedName("url")
+    @SerializedName("text")
     @Expose
-    var url: String? = null
+    var text: String? = null
 }
