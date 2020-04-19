@@ -39,20 +39,19 @@ class CheckForFakeActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
         model.check.observe(this, Observer {
             if (it == null) {
-                alert {
-                    title = "Error"
-                    message = "Sorry, something went wrong"
-                    okButton { }
-                }
+                errorAlert()
             } else {
-                if (!binding.nothindText.isGone) binding.nothindText.visibility = View.GONE
                 addResult(it)
+
             }
         })
     }
 
     fun addResult(result: CheckLinkResponse) {
         binding.resultsLayout.addView(initsubLayoutForResult(result))
+
+        if (!binding.nothindText.isGone) binding.nothindText.visibility = View.GONE
+
 
     }
 
@@ -64,18 +63,26 @@ class CheckForFakeActivity : AppCompatActivity() {
         tv1.text = result.url
         tv1.movementMethod = LinkMovementMethod.getInstance();
         tv1.setTextAppearance(R.style.middle_description_text)
-        tv1.width = 200
+        tv1.width = 300
 
         val view: View = View(this)
         view.layoutParams = ViewGroup.LayoutParams(200, ViewGroup.LayoutParams.WRAP_CONTENT)
 
         val tv2 = TextView(this)
-        tv2.text = (Math.round(result.prob!! * 100.0) / 100.0).toString()
+        tv2.text = "Truthfulness: ${(Math.round(result.prob!! * 100.0).toString())}%"
         tv2.setTextAppearance(R.style.middle_description_text)
 
         linear.addView(tv1)
         linear.addView(view)
         linear.addView(tv2)
         return linear
+    }
+
+    fun errorAlert(){
+        alert {
+            title = "Error"
+            message = "Something went wrong"
+            okButton { }
+        }
     }
 }

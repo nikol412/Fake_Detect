@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object FakeService {
     private var retrofit: Retrofit? = null
-    private const val BASE_URL = "http://keesha787898.pythonanywhere.com/"
+    private const val BASE_URL = "https://LHD--alexandrgonchar.repl.co/"
     val retrofitInstance: Retrofit?
         get() {
             if (retrofit == null) {

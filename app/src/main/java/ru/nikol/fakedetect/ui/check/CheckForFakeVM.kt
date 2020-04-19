@@ -15,6 +15,7 @@ import ru.nikol.fakedetect.network.pojo.response.CheckLinkResponse
 
 class CheckForFakeVM : ViewModel() {
     val textField: MutableLiveData<String> = MutableLiveData("")
+    val error: SingleLiveEvent<String> = SingleLiveEvent()
     val check: SingleLiveEvent<CheckLinkResponse> = SingleLiveEvent()
     val retrofitInstance: Retrofit? = FakeService.retrofitInstance
     val service = retrofitInstance!!.create(API::class.java)
@@ -24,6 +25,7 @@ class CheckForFakeVM : ViewModel() {
         if (textField.value != null) {
             sendLink(textField.value!!)
         }
+        //textField.value = ""
     }
 
     fun sendLink(url: String) {
@@ -40,9 +42,23 @@ class CheckForFakeVM : ViewModel() {
                 call: Call<CheckLinkResponse>,
                 response: Response<CheckLinkResponse>
             ) {
-                val checkResponse = response.body()
-                checkResponse?.url = textField.value
-                check.value = checkResponse
+                when(response.code()){
+                    200 -> {
+                        val checkResponse = response.body()
+                        checkResponse?.url = textField.value
+                        check.value = checkResponse
+                    }
+                    404 -> {
+                        Log.d("retrofit", response.errorBody().toString())
+                    }
+                    500 -> {
+                        Log.d("retrofit", response.errorBody().toString())
+                        Log.d("retrofit", "our sending url is ${url}")
+                    }
+                }
+//                val checkResponse = response.body()
+//                checkResponse?.url = textField.value
+//                check.value = checkResponse
                 Log.d("retrofit", response.toString())
             }
 
