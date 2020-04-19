@@ -8,4 +8,25 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="input_view">
+        <item name="android:fontFamily">@font/neue_montreal_regular</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:paddingStart">15dp</item>
+        <item name="android:paddingEnd">15dp</item>
+        <item name="android:textColorHint">@color/colorLight</item>
+        <item name="android:textColor">@color/colorLight</item>
+<!--        <item name="android:textColor">@color/colorPrimary</item>-->
+        <item name="android:background">@drawable/rounded_layout</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:layout_height">50dp</item>
+    </style>
+
+    <style name="middle_description_text">
+        <item name="android:fontFamily">@font/neue_montreal_regular</item>
+        <item name="android:textSize">17sp</item>
+        <item name="lineHeight">24sp</item>
+        <item name="android:textColor">@color/colorLight</item>
+    </style>
+
 </resources>

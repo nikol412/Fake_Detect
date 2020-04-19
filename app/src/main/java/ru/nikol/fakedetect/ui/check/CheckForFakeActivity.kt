@@ -1,14 +1,19 @@
 package ru.nikol.fakedetect.ui.check
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.view.Gravity
 import android.view.View
+import android.view.View.GONE
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.solver.widgets.ConstraintWidget.GONE
+import androidx.constraintlayout.widget.ConstraintSet.GONE
+import androidx.core.view.isGone
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import org.jetbrains.anko.alert
@@ -41,6 +46,7 @@ class CheckForFakeActivity : AppCompatActivity() {
                 }
             } else {
                 toast(it.prob.toString())
+                if(!binding.nothindText.isGone) binding.nothindText.visibility = View.GONE
                 addResult(it)
                 //TODO realize visualization response
             }
@@ -53,13 +59,14 @@ class CheckForFakeActivity : AppCompatActivity() {
         val tv1 = TextView(this)
         tv1.text = result.url
         tv1.movementMethod = LinkMovementMethod.getInstance();
-
+        tv1.setTextAppearance(R.style.middle_description_text)
 
         val view:View = View(this)
         view.layoutParams = ViewGroup.LayoutParams(200, ViewGroup.LayoutParams.WRAP_CONTENT)
 
         val tv2 = TextView(this)
-        tv2.text = result.prob.toString()
+        tv2.text = (Math.round(result.prob!! * 100.0) / 100.0).toString()
+        tv2.setTextAppearance(R.style.middle_description_text)
 
         linear.addView(tv1)
         linear.addView(view)
