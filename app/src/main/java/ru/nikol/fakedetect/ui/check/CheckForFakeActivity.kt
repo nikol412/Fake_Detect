@@ -45,17 +45,21 @@ class CheckForFakeActivity : AppCompatActivity() {
                     okButton { }
                 }
             } else {
-                toast(it.prob.toString())
                 if (!binding.nothindText.isGone) binding.nothindText.visibility = View.GONE
                 addResult(it)
-                //TODO realize visualization response
             }
         })
     }
 
     fun addResult(result: CheckLinkResponse) {
+        binding.resultsLayout.addView(initsubLayoutForResult(result))
+
+    }
+
+    fun initsubLayoutForResult(result: CheckLinkResponse):LinearLayout{
         val linear = LinearLayout(this)
         linear.orientation = LinearLayout.HORIZONTAL
+
         val tv1 = TextView(this)
         tv1.text = result.url
         tv1.movementMethod = LinkMovementMethod.getInstance();
@@ -69,10 +73,9 @@ class CheckForFakeActivity : AppCompatActivity() {
         tv2.text = (Math.round(result.prob!! * 100.0) / 100.0).toString()
         tv2.setTextAppearance(R.style.middle_description_text)
 
-
         linear.addView(tv1)
         linear.addView(view)
         linear.addView(tv2)
-        binding.resultsLayout.addView(linear)
+        return linear
     }
 }

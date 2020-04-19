@@ -40,7 +40,6 @@ class CheckForFakeVM : ViewModel() {
                 call: Call<CheckLinkResponse>,
                 response: Response<CheckLinkResponse>
             ) {
-                //check.value = response.body()?.prob.toString()
                 val checkResponse = response.body()
                 checkResponse?.url = textField.value
                 check.value = checkResponse
