@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:context=".ui.check.CheckForFakeActivity"
         tools:layout_editor_absoluteY="1dp"
-        android:background="@android:color/black">
+        android:background="#595959">
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="60dp"
                 android:ems="10"
-                android:background="@android:color/white"
+                android:background="#A6A6A6"
                 android:textSize="32sp"
                 android:inputType="textPersonName"
                 android:hint="@string/write_link_here"
@@ -51,11 +51,17 @@
                 android:layout_marginTop="16dp"
                 android:background="@drawable/rounded_button"/>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/list_recycler_view"
-                android:layout_marginTop="30dp"
+            <LinearLayout
+                android:id="@+id/results_layout"
                 android:layout_width="match_parent"
-                android:layout_height="500dp" />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nothing here"/>
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>

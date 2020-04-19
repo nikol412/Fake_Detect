@@ -1,6 +1,8 @@
 package ru.nikol.fakedetect.ui.check
 
 import android.util.Log
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import retrofit2.Call
@@ -15,7 +17,7 @@ import ru.nikol.fakedetect.network.pojo.response.CheckLinkResponse
 
 class CheckForFakeVM: ViewModel() {
     val textField:MutableLiveData<String> = MutableLiveData("")
-    val check:SingleLiveEvent<String> = SingleLiveEvent()
+    val check:SingleLiveEvent<CheckLinkResponse> = SingleLiveEvent()
     val retrofitInstance: Retrofit? = FakeService.retrofitInstance
     val service = retrofitInstance!!.create(API::class.java)
 
@@ -42,12 +44,15 @@ class CheckForFakeVM: ViewModel() {
             ) {
                 //check.value = response.body()?.prob.toString()
                 val checkResponse = response.body()
-                check.value = checkResponse?.prob.toString()
+                checkResponse?.url = textField.value
+                check.value = checkResponse
                 Log.d("retrofit", response.toString())
             }
 
 
         })
     }
+
+
 
 }
