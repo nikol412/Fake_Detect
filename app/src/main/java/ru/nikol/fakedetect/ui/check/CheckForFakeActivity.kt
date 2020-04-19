@@ -1,5 +1,6 @@
 package ru.nikol.fakedetect.ui.check
 
+import android.content.Intent
 import android.opengl.Visibility
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
@@ -35,6 +36,10 @@ class CheckForFakeActivity : AppCompatActivity() {
             this,
             R.layout.activity_check_for_fake
         )
+        val recieveValue = intent.getStringExtra(Intent.EXTRA_TEXT)
+        if(recieveValue!= null){
+            model.textField.value = recieveValue
+        }
         binding.viewModel = model
         binding.lifecycleOwner = this
         model.check.observe(this, Observer {
@@ -60,6 +65,7 @@ class CheckForFakeActivity : AppCompatActivity() {
         tv1.text = result.url
         tv1.movementMethod = LinkMovementMethod.getInstance();
         tv1.setTextAppearance(R.style.middle_description_text)
+        tv1.width = 200
 
         val view:View = View(this)
         view.layoutParams = ViewGroup.LayoutParams(200, ViewGroup.LayoutParams.WRAP_CONTENT)
