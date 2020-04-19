@@ -14,59 +14,59 @@
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:context=".ui.check.CheckForFakeActivity"
-        tools:layout_editor_absoluteY="1dp"
-        android:background="@color/colorPrimaryDark"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp">
+        tools:layout_editor_absoluteY="1dp">
 
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="32dp">
 
 
             <EditText
                 android:id="@+id/editText"
+                style="@style/input_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="150dp"
                 android:ems="10"
-                android:inputType="textPersonName"
                 android:hint="@string/write_link_here"
-                android:text="@={viewModel.textField}"
-                style="@style/input_view"/>
+                android:inputType="textPersonName"
+                android:text="@={viewModel.textField}" />
 
             <Button
                 android:id="@+id/button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/check"
                 android:layout_gravity="center"
-                android:onClick="@{() -> viewModel.onCheckClick()}"
                 android:layout_marginTop="16dp"
-                android:textColor="@color/colorLight"
                 android:background="@drawable/rounded_button"
-                />
+                android:onClick="@{() -> viewModel.onCheckClick()}"
+                android:text="@string/check"
+                android:textColor="@color/colorLight" />
 
             <LinearLayout
                 android:id="@+id/results_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
                 android:layout_marginTop="36dp"
-                android:background="@drawable/rounded_layout">
+                android:background="@drawable/rounded_layout"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/nothindText"
+                    style="@style/middle_description_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/nothing_here"
                     android:gravity="center_horizontal"
-                    style="@style/middle_description_text"/>
+                    android:text="@string/nothing_here" />
             </LinearLayout>
 
         </LinearLayout>

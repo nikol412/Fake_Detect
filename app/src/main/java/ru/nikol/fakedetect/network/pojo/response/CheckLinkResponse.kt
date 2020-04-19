@@ -14,5 +14,5 @@ class CheckLinkResponse {
 
     @SerializedName("url")
     @Expose
-    var url:String? = null
+    var url: String? = null
 }
