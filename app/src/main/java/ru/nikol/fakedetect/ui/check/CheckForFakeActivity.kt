@@ -14,7 +14,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.okButton
-import org.jetbrains.anko.toast
 import ru.nikol.fakedetect.R
 import ru.nikol.fakedetect.databinding.ActivityCheckForFakeBinding
 import ru.nikol.fakedetect.network.pojo.response.CheckLinkResponse
@@ -55,7 +54,7 @@ class CheckForFakeActivity : AppCompatActivity() {
 
     }
 
-    fun initsubLayoutForResult(result: CheckLinkResponse):LinearLayout{
+    fun initsubLayoutForResult(result: CheckLinkResponse): LinearLayout {
         val linear = LinearLayout(this)
         linear.orientation = LinearLayout.HORIZONTAL
 
@@ -78,7 +77,7 @@ class CheckForFakeActivity : AppCompatActivity() {
         return linear
     }
 
-    fun errorAlert(){
+    fun errorAlert() {
         alert {
             title = "Error"
             message = "Something went wrong"

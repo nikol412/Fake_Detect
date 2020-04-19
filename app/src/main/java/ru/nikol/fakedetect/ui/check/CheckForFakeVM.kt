@@ -42,7 +42,7 @@ class CheckForFakeVM : ViewModel() {
                 call: Call<CheckLinkResponse>,
                 response: Response<CheckLinkResponse>
             ) {
-                when(response.code()){
+                when (response.code()) {
                     200 -> {
                         val checkResponse = response.body()
                         checkResponse?.url = textField.value
